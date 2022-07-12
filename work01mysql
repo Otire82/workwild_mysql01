@@ -1,0 +1,74 @@
+mysql> CREATE DATABASE kaamelott;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> USE kaamelott;
+Database changed
+
+mysql> CREATE TABLE `knight` ( `id` INT NOT NULL AUTO_INCREMENT, `name` VARCHAR(80) NOT NULL, `age` INT(2) NOT NULL, PRIMARY KEY (`id`));
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> INSERT INTO knight (name, age) VALUES ('Arthur', 40), ('perceval', 35), ('Lancelot', 38);
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM knight;
++----+----------+-----+
+| id | name     | age |
++----+----------+-----+
+|  1 | Arthur   |  40 |
+|  2 | perceval |  35 |
+|  3 | Lancelot |  38 |
++----+----------+-----+
+3 rows in set (0.00 sec)
+
+mysql> UPDATE knight SET age = 36 WHERE id = 2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM knight;
++----+----------+-----+
+| id | name     | age |
++----+----------+-----+
+|  1 | Arthur   |  40 |
+|  2 | perceval |  36 |
+|  3 | Lancelot |  38 |
++----+----------+-----+
+3 rows in set (0.00 sec)
+
+mysql> DELETE FROM knight WHERE id = 3;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM knight;
++----+----------+-----+
+| id | name     | age |
++----+----------+-----+
+|  1 | Arthur   |  40 |
+|  2 | perceval |  36 |
++----+----------+-----+
+2 rows in set (0.00 sec)
+
+mysql> CREATE TABLE `weapon` ( `id` INT NOT NULL AUTO_INCREMENT, `name` VARCHAR(50) NOT NULL, PRIMARY KEY (`id`));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> INSERT INTO weapon (name) VALUES ('épée'), ('arc'), ('lance'), ('catapulte');
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM weapon;
++----+-----------+
+| id | name      |
++----+-----------+
+|  1 | épée      |
+|  2 | arc       |
+|  3 | lance     |
+|  4 | catapulte |
++----+-----------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT name FROM knight WHERE age > 37;
++--------+
+| name   |
++--------+
+| Arthur |
++--------+
+1 row in set (0.00 sec)
